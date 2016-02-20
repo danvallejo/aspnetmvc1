@@ -14,5 +14,10 @@ namespace HelloWorld.Controllers
         {
             return View();
         }
+
+        public ActionResult RsvpForm()
+        {
+            return View();
+        }
 	}
 }
