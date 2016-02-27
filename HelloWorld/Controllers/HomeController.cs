@@ -15,9 +15,16 @@ namespace HelloWorld.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult RsvpForm()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult RsvpForm(Models.GuestResponse guestResponse)
+        {
+            return View("Thanks", guestResponse);
         }
 	}
 }
