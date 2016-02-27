@@ -1,5 +1,7 @@
 ﻿@model HelloWorld.Models.GuestResponse
 
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
 <h1>Thank you, @Model.Name we will email you at <a href="mailto:@Model.Email">@Model.Email</a></h1>
 @if (Model.WillAttend == true)
 {
