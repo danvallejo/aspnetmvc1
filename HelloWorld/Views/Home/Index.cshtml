@@ -1,7 +1,22 @@
-﻿<p>The party is tonight.</p>
+﻿<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<style>
+    .btn a {
+        color: white;
+        text-decoration: none;
+    }
 
-<a href="/Home/RsvpForm">RSVP Now - Old School</a>
+    body {
+        background-color: #f1f1f1;
+    }
+</style>
 
-@Html.ActionLink("RSVP Now - New School", "RsvpForm")
+<div class="text-center">
+    <h2>The party is tonight.</h2>
+    <h3>And you're invited</h3>
+
+    <div class="btn btn-success">
+        @Html.ActionLink("RSVP Now", "RsvpForm")
+    </div>
+</div>
 
 <p>Copyright 1999-@DateTime.Now.Year</p>
