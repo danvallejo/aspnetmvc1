@@ -10,11 +10,11 @@ namespace HelloWorld.Controllers
 {
     public class HomeController : Controller
     {
-        private ProductRepository productRepository;
+        private IProductRepository productRepository;
 
-        public HomeController()
+        public HomeController(IProductRepository productRepository)
         {
-            this.productRepository = new ProductRepository();
+            this.productRepository = productRepository;
         }
 
         public ActionResult Product()

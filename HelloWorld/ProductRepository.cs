@@ -7,7 +7,12 @@ using HelloWorld.Models;
 
 namespace HelloWorld
 {
-    public class ProductRepository 
+    public interface IProductRepository
+    {
+        IEnumerable<Product> Products { get; }
+    }
+
+    public class ProductRepository : IProductRepository
     {
         public IEnumerable<Product> Products
         {
