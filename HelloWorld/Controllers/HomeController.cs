@@ -4,10 +4,26 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using HelloWorld.Models;
+
 namespace HelloWorld.Controllers
 {
     public class HomeController : Controller
     {
+        private Product myProduct = new Product
+        {
+            ProductId = 1,
+            Name = "Kayak",
+            Description = "A boat for one person",
+            Category = "water-sports",
+            Price = 200m,
+        };
+
+        public ActionResult Product()
+        {
+            return View("MyProduct", myProduct);
+        }
+
         //
         // GET: /Home/
         public ActionResult Index()
@@ -22,7 +38,7 @@ namespace HelloWorld.Controllers
         }
 
         [HttpPost]
-        public ActionResult RsvpForm(Models.GuestResponse guestResponse)
+        public ActionResult RsvpForm(GuestResponse guestResponse)
         {
             if (ModelState.IsValid)
             {
