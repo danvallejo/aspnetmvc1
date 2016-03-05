@@ -4,4 +4,6 @@
     ViewBag.MyTitle = "Product Information: " + Model.Name;
 }
 
-Product information goes here...
+<p>Name: @Model.Name</p>
+<p>Description: @Model.Description</p>
+<p>Price: @string.Format("{0:C}",Model.Price)</p>

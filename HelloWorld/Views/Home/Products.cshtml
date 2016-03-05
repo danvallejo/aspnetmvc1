@@ -1,0 +1,23 @@
+﻿@model HelloWorld.Models.Product[]
+@{
+    ViewBag.Title = "Products";
+}
+
+@if (Model.Length > 0)
+{
+    <table>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@string.Format("{0:C}", product.Price)</td>
+                <td>{0} items or Out of Stock or Low Stock</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h2>No product data found.</h2>
+}
