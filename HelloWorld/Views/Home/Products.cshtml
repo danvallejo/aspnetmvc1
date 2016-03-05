@@ -12,8 +12,21 @@
                 <td>@product.Name</td>
                 <td>@product.Description</td>
                 <td>@string.Format("{0:C}", product.Price)</td>
-                <td>{0} items or Out of Stock or Low Stock</td>
-            </tr>
+                <td>
+                    @if (product.Count == 0)
+                    {
+                        @:Out of Stock
+                    }
+                    else if (product.Count == 1)
+                    {
+                        <p>Low Stock</p>
+                    }
+                    else
+                    {
+                      <text>@string.Format("{0} items", product.Count)</text>
+                    }
+            </td>
+        </tr>
         }
     </table>
 }
