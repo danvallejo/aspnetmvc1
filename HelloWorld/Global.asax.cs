@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+using Autofac;
+using Autofac.Integration.Mvc;
+using System.Reflection;
+
 namespace HelloWorld
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -13,6 +17,24 @@ namespace HelloWorld
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            RegisterAutofac();
+        }
+
+        private void RegisterAutofac()
+        {
+            var builder = new ContainerBuilder();
+
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsSelf().AsImplementedInterfaces();
+
+            //builder.RegisterType<ContactRepository>().As<IContactRepository>();
+
+            var container = builder.Build();
+
+            // Configure dependency resolver.
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
         protected void Application_Error()
