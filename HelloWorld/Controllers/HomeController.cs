@@ -41,6 +41,9 @@ namespace HelloWorld.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
+            //int x = 1;
+            //x = x / (x - 1);
+
             return View();
         }
 
