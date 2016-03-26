@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using HelloWorld.Models;
+using System.Web.Caching;
 
 namespace HelloWorld
 {
@@ -18,14 +19,23 @@ namespace HelloWorld
         {
             get
             {
-                var items = new[]
+                if (HttpContext.Current.Cache["MyProducts"] == null)
                 {
-                    new Product{ ProductId=101, Name = "Baseball", Description="balls", Price=14.20m},
-                    new Product{ ProductId=102, Name="Football", Description="nfl", Price=9.24m},
-                    new Product{ Name="Tennis ball"} ,
-                    new Product{ Name="Golf ball"},
-                };
-                return items;
+                    var items = new[]
+                    {
+                        new Product{ Name = "Baseball", Price = 1},
+                        new Product{ Name="Football", Price =2 },
+                        new Product{ Name="Tennis ball", Price=11} ,
+                        new Product{ Name="Golf ball", Price = 12},
+                    };
+
+                    HttpContext.Current.Cache.Insert("MyProducts",
+                        items, null,
+                        DateTime.Now.AddSeconds(10),
+                        Cache.NoSlidingExpiration);
+                }
+
+                return (IEnumerable<Product>)HttpContext.Current.Cache["MyProducts"];
             }
         }
     }

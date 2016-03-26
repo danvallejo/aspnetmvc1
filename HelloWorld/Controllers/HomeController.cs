@@ -5,10 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 
 using HelloWorld.Models;
+using System.Web.UI;
 
 namespace HelloWorld.Controllers
 {
-    [Logging]
+    //[Logging]
+    //[AuthorizeIPAddress]
     public class HomeController : Controller
     {
         private IProductRepository productRepository;
@@ -18,6 +20,19 @@ namespace HelloWorld.Controllers
             this.productRepository = productRepository;
         }
 
+        public PartialViewResult IncrementCount()
+        {
+            int count = 0;
+            if (Session["MyCount"] != null)
+            {
+                count = (int)Session["MyCount"];
+                count++;
+            }
+
+            Session["MyCount"] = count;
+            return new PartialViewResult();
+        }
+
         public ActionResult Product()
         {
             return View(productRepository.Products.First());
@@ -25,11 +40,13 @@ namespace HelloWorld.Controllers
 
         public ActionResult Products()
         {
+            ViewBag.MyCount = 1;
             return View(productRepository.Products);
         }
 
         //
         // GET: /Home/
+        //[OutputCache(Duration = 10, Location = OutputCacheLocation.Any, VaryByParam = "none")]
         public ActionResult Index()
         {
             //int x = 1;

@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AuthorizeIPAddress.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -139,6 +140,7 @@
     <Content Include="Views\Home\MyProduct.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Home\IncrementCount.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
