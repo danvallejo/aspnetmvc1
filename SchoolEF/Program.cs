@@ -29,8 +29,26 @@ namespace SchoolEF
             }
 
             // Exercise: Display all Users and their classes
+            foreach (var user in school.Users)
+            {
+                Console.WriteLine("{0}", user.UserName);
+
+                foreach (var classMaster in user.ClassMasters)
+                {
+                    Console.WriteLine("\t{0}", classMaster.ClassName);
+                }
+            }
 
             // Exercise: Display all classes and their users
+            foreach (var classMaster in school.ClassMasters)
+            {
+                Console.WriteLine("{0}", classMaster.ClassName);
+
+                foreach (var user in classMaster.Users)
+                {
+                    Console.WriteLine("\t{0}", user.UserName);
+                }
+            }
 
             school.Database.Connection.Close();
 
