@@ -20,6 +20,20 @@ namespace HelloWorld.Controllers
             this.productRepository = productRepository;
         }
 
+        public ActionResult SetCookie()
+        {
+            var cookie = new HttpCookie("MyCookie");
+            cookie.Expires = DateTime.Now.AddMinutes(1);
+            cookie.Value = "myUserName";
+            HttpContext.Response.Cookies.Add(cookie);
+            return View(cookie);
+        }
+
+        public ActionResult GetCookies()
+        {
+            return View(HttpContext.Request.Cookies["MyCookie"]);
+        }
+
         public PartialViewResult IncrementCount()
         {
             int count = 0;

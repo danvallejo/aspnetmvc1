@@ -141,6 +141,8 @@
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Home\IncrementCount.cshtml" />
+    <Content Include="Views\Home\SetCookie.cshtml" />
+    <Content Include="Views\Home\GetCookies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
