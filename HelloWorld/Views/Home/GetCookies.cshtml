@@ -4,4 +4,11 @@
     Layout = null;
 }
 
-Cookie Get: @Model.Name - @Model.Value - @Model.Expires
+@if (Model == null)
+{
+    <p>Cookie not set</p>
+}
+else
+{
+    <p>Cookie Get: @Model.Name - @Model.Value - @Model.Expires</p>
+}
