@@ -53,7 +53,7 @@ namespace HelloWorld.Tests
                  );
 
             // Arrange
-            var controller = new HomeController(mockProductRepository.Object);
+            var controller = new HomeController(mockProductRepository.Object, null);
 
             // Act
             var result = controller.Products();
@@ -70,7 +70,7 @@ namespace HelloWorld.Tests
         public void TestMethodWithFakeClass()
         {
             // Arrange
-            var controller = new HomeController(new FakeProductRepository());
+            var controller = new HomeController(new FakeProductRepository(), null);
 
             // Act
             var result = controller.Products();

@@ -23,6 +23,7 @@ namespace HelloWorld.Controllers
         }
 
         [Authorize]
+        [IsAdministrator]
         public ActionResult Notes()
         {
             return View();
@@ -41,6 +42,7 @@ namespace HelloWorld.Controllers
                 var user = userRepository.LogIn(model.UserName, model.Password);
                 if (user != null)
                 {
+                    Session["User"] = user;
                     System.Web.Security.FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                     return Redirect(returnUrl);
                 }
@@ -53,6 +55,7 @@ namespace HelloWorld.Controllers
 
         public ActionResult LogOff()
         {
+            Session["User"] = null;
             System.Web.Security.FormsAuthentication.SignOut();
             return Redirect("~/");
         }
