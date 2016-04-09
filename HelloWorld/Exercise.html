@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+     <script>
+        function doHide() {
+            $("p").fadeOut()
+        }
+
+        function doShow() {
+            $("p").fadeIn()
+        }
+
+        function onReady() {
+            $("#hide").click(doHide);
+            $("#show").click(doShow);
+        }
+
+        $(document).ready(onReady);
+    </script>
+</head>
+<body>
+    <p>If you click on the "Hide" button, I will disappear.</p>
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+</body>
+</html>
