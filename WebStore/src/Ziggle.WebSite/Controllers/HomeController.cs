@@ -13,11 +13,71 @@ namespace Ziggle.WebSite.Controllers
     {
         private readonly ICategoryManager categoryManager;
         private readonly IProductManager productManager;
+        private readonly IUserManager userManager;
+        private readonly IShoppingCartManager shoppingCartManager;
 
-        public HomeController(ICategoryManager categoryManager, IProductManager productManager)
+        public HomeController(ICategoryManager categoryManager, IProductManager productManager, IUserManager userManager,
+            IShoppingCartManager shoppingCartManager)
         {
             this.categoryManager = categoryManager;
             this.productManager = productManager;
+            this.userManager = userManager;
+            this.shoppingCartManager = shoppingCartManager;
+        }
+
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LogIn(LoginModel loginModel, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = userManager.LogIn(loginModel.UserName, loginModel.Password);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "User name and password do not match.");
+                }
+                else
+                {
+                    Session["User"] = new Ziggle.WebSite.Models.UserModel { Id = user.Id, Name = user.Name };
+
+                    System.Web.Security.FormsAuthentication.SetAuthCookie(loginModel.UserName, false);
+
+                    return Redirect(returnUrl ?? "~/");
+                    //return Redirect(returnUrl == null ? "~/" : returnUrl);
+                }
+            }
+
+            return View(loginModel);
+        }
+
+        public ActionResult LogOff()
+        {
+            Session["User"] = null;
+            System.Web.Security.FormsAuthentication.SignOut();
+
+            return Redirect("~/");
+        }
+
+        [Authorize]
+        public ActionResult AddToCart(int id)
+        {
+            var user = (Ziggle.WebSite.Models.UserModel)Session["User"];
+
+            var item = shoppingCartManager.Add(user.Id, id, 1);
+
+            var items = shoppingCartManager.GetAll(user.Id)
+                .Select(t => new Ziggle.WebSite.Models.ShoppingCartItem {
+                    UserId = t.UserId, 
+                    ProductId = t.ProductId,
+                    Quantity = t.Quantity })
+                .ToArray();
+
+            return View(items);
         }
 
         public ActionResult Category(int id)

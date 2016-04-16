@@ -5,3 +5,9 @@
 }
 
 <h2>@Model.Category.Name</h2>
+@foreach (var product in Model.Products)
+{
+    <p>@product.Name - @string.Format("{0:C}",product.Price)
+    @Html.ActionLink("Add To Cart", "AddToCart", new { id = product.Id })</p>
+}
+

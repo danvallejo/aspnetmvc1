@@ -76,6 +76,8 @@
     <Compile Include="CategoryManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingCartManager.cs" />
+    <Compile Include="UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ziggle.Repository\Ziggle.Repository.csproj">
