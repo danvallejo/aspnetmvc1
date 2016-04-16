@@ -29,7 +29,7 @@ namespace Ziggle.ProductDatabase
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

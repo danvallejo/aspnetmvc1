@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cf2a456765e9424180f12742b888c2e6" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="ProductDbModel.Category" Width="1.5" PointX="9.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductDbModel.Order" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductDbModel.OrderItem" Width="1.5" PointX="6.625" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductDbModel.Product" Width="1.5" PointX="9.875" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductDbModel.User" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProductDbModel.ShoppingCartItem" Width="1.5" PointX="5.625" PointY="4" IsExpanded="true" />
+      <Diagram DiagramId="afe984cbe32d4dbf98557ebac00d38cf" Name="Diagram1">
+        <EntityTypeShape EntityType="ProductDbModel.Category" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductDbModel.Order" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductDbModel.OrderItem" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductDbModel.Product" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductDbModel.ShoppingCartItem" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductDbModel.User" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
         <AssociationConnector Association="ProductDbModel.FK_Order_User" ManuallyRouted="false" />
         <AssociationConnector Association="ProductDbModel.FK_OrderItem_Order" ManuallyRouted="false" />
         <AssociationConnector Association="ProductDbModel.FK_OrderItem_Product" ManuallyRouted="false" />
